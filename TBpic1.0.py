@@ -13,9 +13,9 @@ def download_page(url):
 def get_image(html):
     regx = r'src="(https://img.*?\.jpg)"'
     pattern = re.compile(regx)
-    get_img = re.findall(pattern,repr(html))
+    imlist = re.findall(pattern,repr(html))
     num = 1
-    for img in get_img:
+    for img in imlist:
         image = download_page(img)
         with open('%s.jpg '%num,'wb') as fp:
             fp.write(image)

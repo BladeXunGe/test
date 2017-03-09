@@ -2,6 +2,7 @@
 import urllib
 import urllib.request
 import re
+import os
 
 
 def download_page(url):
@@ -10,20 +11,24 @@ def download_page(url):
     data = response.read()
     return data
 
+if os.path.exists("D:/imags") == False:
+    os.mkdir("D:/imags")
 
 def get_image(html,x):
-    regx =r'"([.*\S]*\.jpg)" pic_ext="jpeg"'
+    regx = r'src="(https://img.*?\.jpg)"'
     pattern = re.compile(regx)
     imlist = re.findall(pattern,repr(html))
 
     print(imlist)
 
-    for i in imlist:
-        print (i)
-        print (x)
+    for img in imlist:
+        image = download_page(img)
+        name = '%s.jpg '% x
+        with open('D:/imags/'+ name, 'wb') as fp:
+            fp.write(image)
+            x += 1
+            print('downloding pic%s' % x)
 
-        urllib.request.urlretrieve(i, '%s.jpg' % x)
-        x += 1
     return x
 
 x = 1
@@ -35,3 +40,4 @@ for k in range(1,28):
     html = download_page(url)
     get_image(html,x)
     x = get_image(html,x)
+
