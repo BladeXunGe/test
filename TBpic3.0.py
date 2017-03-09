@@ -40,4 +40,3 @@ for k in range(1,28):
     html = download_page(url)
     get_image(html,x)
     x = get_image(html,x)
-
