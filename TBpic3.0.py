@@ -11,8 +11,9 @@ def download_page(url):
     data = response.read()
     return data
 
-if os.path.exists("D:/imags") == False:
-    os.mkdir("D:/imags")
+path = input('please enter your place like D:/imags/')
+if os.path.exists(path) == False:
+    os.mkdir(path)
 
 def get_image(html,x):
     regx = r'src="(https://img.*?\.jpg)"'
@@ -24,7 +25,7 @@ def get_image(html,x):
     for img in imlist:
         image = download_page(img)
         name = '%s.jpg '% x
-        with open('D:/imags/'+ name, 'wb') as fp:
+        with open(path + name, 'wb') as fp:
             fp.write(image)
             x += 1
             print('downloding pic%s' % x)
@@ -32,7 +33,7 @@ def get_image(html,x):
     return x
 
 x = 1
-url = 'https://tieba.baidu.com/p/1181591427?pn='
+url = input('please enter your url like https://tieba.baidu.com/p/1181591427?pn=')
 
 for k in range(1,28):
     ul = url + str(k)
