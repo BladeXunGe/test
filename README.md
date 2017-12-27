@@ -6,3 +6,6 @@ TBpic1.0为单页爬取,2.0为多页，接下来的功能为精准范围，多�
 TBpic3.0为交互输入和设定位置储存。
 
 ZHpic1.0勉强可用。
+
+TB为文字版适合扫文，已经封装为exe。链接: https://pan.baidu.com/s/1cpsTWU 密码: mk9r
+
