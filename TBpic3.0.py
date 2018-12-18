@@ -38,6 +38,6 @@ url = input('please enter your url like https://tieba.baidu.com/p/1181591427?pn=
 for k in range(1,28):
     ul = url + str(k)
     print(ul)
-    html = download_page(url)
+    html = download_page(u)
     get_image(html,x)
     x = get_image(html,x)

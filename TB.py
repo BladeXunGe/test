@@ -45,7 +45,7 @@ def printTitle(html):
 
 def fillUnivlist(lis,li,html):
     try:
-        patten = re.compile(r'<div id="post_content_\d*" class="d_post_content j_d_post_content ">(.*?)</div>', re.S)
+        patten = re.compile(r'<div id="post_content_.*?">(.*?)</div>', re.S)
         nbaInfo = re.findall(patten, str(html))
         pattenFloor = re.compile(r'<span class="tail-info">(\d*楼)</span><span class="tail-info">', re.S)
         floorText = re.findall(pattenFloor, str(html))
@@ -98,6 +98,22 @@ def main():
         fillUnivlist(lis, li, html)
         writeUnivlist(lis, li, output_file, len(lis))
         count = count + 1
+        print('success')
+
+print(
+'''
+名称：百度贴吧帖子爬虫
+作者：九九@九逍QAQ
+用法：1.输入网址例如 - http://tieba.baidu.com/p/5482568476?pn=           正常浏览
+                     - https://tieba.baidu.com/p/4779295636?see_lz=1&pn= 只看楼主
+      2.输入爬取页数
+说明：1.解压运行TB.exe
+      2.文件储存于D:wen/目录
+      3.帖子标题带有 | 标志会报错，暂时无解决方案
+      4.是否只看楼主取决输入的网址
+      5.有事微博
+      6.基于python封装的exe GitHub地址：https://github.com/BladeXunGe/test
 
 
+     ''')
 main()
